@@ -2,3 +2,31 @@ p {
     text-align: center;
     color: blue;
   }
+
+  #customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  #customers td,
+  #customers th {
+    border: 2px solid #ddd;
+    padding: 8px;
+  }
+
+  #customers tr:nth-child(even) {
+    background-color: WHITE
+  }
+
+  #customers tr:hover {
+    background-color: GREY
+  }
+
+  #customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: GREY;
+    color: WHITE;
+  }
