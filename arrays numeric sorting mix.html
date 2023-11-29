@@ -1,0 +1,24 @@
+<html>
+    <body><H2>USING BUTTON </H2><BR><BR><BR>
+        <button onclick="Ascending()">SORT ASCENDING OREDER</button>
+        <button onclick="Descending()">SORT DESCENDING ORDER</button>
+
+        <P id ="demo"></P>
+        <script>
+            const points = [40, 108348760, 47637641, 38473665, 264565, 1087678];
+document.getElementById("demo1").innerHTML = points;  
+
+points.sort(function(a, b){return a - b});
+document.getElementById("demo1").innerHTML = points;
+function Ascending(){ points.sort();
+  document.getElementById("demo").innerHTML = points;
+}
+
+function Descending(){points.sort();
+    points.sort(function(a, b){return a - b});
+document.getElementById("demo").innerHTML =  points;}
+        </script>
+    </body>
+</html>
+       
+        
