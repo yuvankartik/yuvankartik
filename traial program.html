@@ -1,7 +1,7 @@
 <html>
 <body>
 
-<input type="number"  onchange="myFunction()" Id="pawn">
+<input type="text"  onchange="myFunction()" Id="pawn">
 
 
 
@@ -12,12 +12,16 @@
 <script>
 function myFunction() {
 const positions=["a","b","c","d","e","f","g","h"];
+var pos = document.getElementById("pawn").value;
+var col = pos.substring (0,1);
+var row = Number(pos.substring(1,2));
 
-  var x =Number( document.getElementById("pawn").value)-1;
-  const moves =[];
- if (x > 0 ) moves.push(positions[x-1]);
-   moves.push(positions[x]);
-   if(x < 7) moves.push(positions[x+1]);
+  var x =positions.indexOf(col);
+  // document.getElementById("demo").innerHTML = "x: " +x;
+  const moves=[];
+ if (x > 0 ) moves.push(positions[x-1]+ row);
+   moves.push(positions[x]+ row );
+   if(x < 7) moves.push(positions[x+1]+ row);
  
   document.getElementById("demo").innerHTML = "moves: " +moves;
 }
