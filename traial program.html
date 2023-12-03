@@ -1,31 +1,81 @@
 <html>
+
 <body>
 
-<input type="text"  onchange="myFunction()" Id="pawn">
+  pawn <input type="text" onchange="myFunction()" Id="pawn">
 
 
 
 
 
-<p id="demo"></p>
+  <p id="demo"></p>
 
-<script>
-function myFunction() {
-const positions=["a","b","c","d","e","f","g","h"];
-var pos = document.getElementById("pawn").value;
-var col = pos.substring (0,1);
-var row = Number(pos.substring(1,2));
+  rook<input type="text" onchange="rookMoves()" Id="rook">
+  <p id="moves"></p>
 
-  var x =positions.indexOf(col);
-  // document.getElementById("demo").innerHTML = "x: " +x;
-  const moves=[];
- if (x > 0 ) moves.push(positions[x-1]+ row);
-   moves.push(positions[x]+ row );
-   if(x < 7) moves.push(positions[x+1]+ row);
- 
-  document.getElementById("demo").innerHTML = "moves: " +moves;
-}
-</script>
+  Bishop<input type="text" onchange="bishopMoves()" Id="bishop">
+  <p id="bmoves"></p>
+
+
+  <script>
+    const alphabets = ["a", "b", "c", "d", "e", "f", "g", "h"];
+    function myFunction() {
+
+      var pos = document.getElementById("pawn").value;
+      var col = pos.substring(0, 1);
+      var row = Number(pos.substring(1, 2));
+
+      var x = alphabets.indexOf(col);
+      // document.getElementById("demo").innerHTML = "x: " +x;
+      const moves = [];
+      if (x > 0) moves.push(alphabets[x - 1] + (1 + row));
+      moves.push(alphabets[x] + (1 + row));
+      if (row == 2) moves.push(alphabets[x] + (2 + row));
+      if (x < 7) moves.push(alphabets[x + 1] + (1 + row));
+
+      document.getElementById("demo").innerHTML = "moves: " + moves;
+    }
+    function rookMoves() {
+
+      var pos = document.getElementById("rook").value;
+      var col = pos.substring(0, 1);
+      var row = Number(pos.substring(1, 2));
+
+
+      const moves = [];
+
+      for (let i in alphabets) {
+        var y = Number(i) + 1;
+
+        if (y != row) moves.push(col + y);
+        if (alphabets[y - 1] != col) moves.push(alphabets[y - 1] + row);
+      }
+      document.getElementById("moves").innerHTML = "moves: " + moves;
+    }
+
+    function bishopMoves() {
+
+      var pos = document.getElementById("bishop").value;
+      var col = pos.substring(0, 1);
+      var row = Number(pos.substring(1, 2));
+      var x = alphabets.indexOf(col);
+      const moves = [];
+      var offset = row - x - 1;
+      for (let i in alphabets) {
+        var y = Number(i) + 1;
+        var up = y + offset;
+        if (up > 0 && up < 9)
+          if (alphabets[y - 1] != col) moves.push(alphabets[y - 1] + up);
+        // var down = 8 - y + 8 -  row - x  ;
+        //if (down > 0 && down < 9)
+        //if (alphabets[y - 1] != col) moves.push(alphabets[y - 1] + down);
+      }
+      document.getElementById("bmoves").innerHTML = "bmoves: " + moves;
+
+
+    }
+  </script>
 
 </body>
+
 </html>
