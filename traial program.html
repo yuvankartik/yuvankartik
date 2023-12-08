@@ -19,11 +19,15 @@
 
   <script>
     const alphabets = ["a", "b", "c", "d", "e", "f", "g", "h"];
+
+
+
+
     function myFunction() {
 
       var pos = document.getElementById("pawn").value;
       var col = pos.substring(0, 1);
-      var row = Number(pos.substring(1, 2));
+      var row = Number(pos.substring(1, 2)); 6
 
       var x = alphabets.indexOf(col);
       // document.getElementById("demo").innerHTML = "x: " +x;
@@ -36,6 +40,7 @@
       document.getElementById("demo").innerHTML = "moves: " + moves;
     }
     function rookMoves() {
+
 
       var pos = document.getElementById("rook").value;
       var col = pos.substring(0, 1);
@@ -56,19 +61,28 @@
     function bishopMoves() {
 
       var pos = document.getElementById("bishop").value;
-      var col = pos.substring(0, 1);
-      var row = Number(pos.substring(1, 2));
-      var x = alphabets.indexOf(col);
+      var file = pos.substring(0, 1);
+      var rank = Number(pos.substring(1, 2));
+      var fileNum = alphabets.indexOf(file) + 1;
       const moves = [];
-      var offset = row - x - 1;
-      for (let i in alphabets) {
-        var y = Number(i) + 1;
-        var up = y + offset;
-        if (up > 0 && up < 9)
-          if (alphabets[y - 1] != col) moves.push(alphabets[y - 1] + up);
-        // var down = 8 - y + 8 -  row - x  ;
-        //if (down > 0 && down < 9)
-        //if (alphabets[y - 1] != col) moves.push(alphabets[y - 1] + down);
+      var offset = rank - fileNum;
+      var minorOffset = fileNum - (9 - rank);
+      for (let i in alphabets) { // 0-7
+        var option = Number(i) + 1; // 1-8
+        var optionFile = alphabets[option - 1]; // a-h
+        var optionRank = option + offset;
+        // 1 to 8, 0 to 7, -1 to 6, -2 to 5, -3 to 4, 
+        // -4 to 3, -5 to 2, -6 to 1.  
+        var minorOptionRank = option + minorOffset;
+
+        var reversefile = alphabets[8 - option]; // h-a
+        if (optionRank > 0 && optionRank < 9)
+          if (optionFile != file) moves.push(optionFile + optionRank);
+        if (minorOptionRank > 0 && minorOptionRank < 9)// 1 to 8, 0 to 7, -1 to 6, -2 to 5, -3 to 4, 
+          // -4 to 3, -5 to 2, -6 to 1.  
+          if (reversefile != file) moves.push(reversefile + minorOptionRank);
+
+
       }
       document.getElementById("bmoves").innerHTML = "bmoves: " + moves;
 
