@@ -1,0 +1,111 @@
+<html>
+
+<body>
+    <p id="demo"></p>
+
+    <script>
+        let text = "WHY is this his";
+        let pattern = /^WHY/g;
+        let result = text.match(pattern);
+
+        document.getElementById("demo").innerHTML = result;
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <script>
+        let text = "Is this his";
+        let pattern = /his$/;
+        let result = text.match(pattern);
+
+        document.getElementById("demo").innerHTML = result;
+    </script>
+
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html>
+
+<body>
+    <p id="demo"></p>
+
+    <script>
+        let text = "100, 1000 or 10000?";
+        let pattern = /\d{5}/g;
+        let result = text.match(pattern);
+
+        document.getElementById("demo").innerHTML = result;
+    </script>
+
+</body>
+
+</html>
+
+
+<!DOCTYPE html>
+<html>
+
+<body>
+
+
+
+    <p id="demo"></p>
+
+    <script>
+        let text = "re, green, red, green, gren, gr, blue, yellow";
+        let pattern = /(red|blue)/g;
+        let result = text.match(pattern);
+
+        document.getElementById("demo").innerHTML = result;
+    </script>
+
+</body>
+
+</html>
+
+
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo"></p>
+
+<script>
+let text = "That's hot!";
+let pattern = /h.t/g;
+let result = text.match(pattern);
+
+document.getElementById("demo").innerHTML = result;
+</script>
+
+</body>
+</html>
+
+<html>
+<body>
+
+<p id="demo"></p>
+
+<script>
+let text = "Hellooo World! Hello W3Schools!"; 
+let pattern = /lo*/g;
+let result = text.match(pattern);
+
+document.getElementById("demo").innerHTML = result;
+</script>
+
+</body>
+</html>
